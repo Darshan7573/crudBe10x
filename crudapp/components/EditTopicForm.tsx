@@ -43,26 +43,29 @@ export default function EditTopicForm({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-      <input
-        onChange={(e) => setNewTitle(e.target.value)}
-        value={newTitle}
-        className="border border-slate-500 px-8 py-2"
-        type="text"
-        placeholder="Topic Title"
-      />
+    <div className="max-w-md mx-auto p-6 bg-white shadow-md rounded-lg mt-10">
+      <h2 className="text-2xl font-bold text-center mb-4">Edit Topic</h2>
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <input
+          onChange={(e) => setNewTitle(e.target.value)}
+          value={newTitle}
+          className="border border-slate-300 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-200"
+          type="text"
+          placeholder="Topic Title"
+        />
 
-      <input
-        onChange={(e) => setNewDescription(e.target.value)}
-        value={newDescription}
-        className="border border-slate-500 px-8 py-2"
-        type="text"
-        placeholder="Topic Description"
-      />
+        <textarea
+          onChange={(e) => setNewDescription(e.target.value)}
+          value={newDescription}
+          className="border border-slate-300 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-200"
+          placeholder="Topic Description"
+          rows={4}
+        />
 
-      <button className="bg-green-600 font-bold text-white py-3 px-6 w-fit">
-        Update Topic
-      </button>
-    </form>
+        <button className="bg-green-600 font-bold text-white py-3 rounded-md hover:bg-green-700 transition duration-200">
+          Update Topic
+        </button>
+      </form>
+    </div>
   );
 }
