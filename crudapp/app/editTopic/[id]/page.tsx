@@ -8,7 +8,7 @@ interface Topic {
 
 const getTopicById = async (id: string): Promise<Topic | null> => {
   try {
-    const res = await fetch(`http://localhost:3000/api/topics/${id}`, {
+    const res = await fetch(`https://crudbe10x.vercel.app/api/topics/${id}`, {
       cache: "no-store",
     });
 
