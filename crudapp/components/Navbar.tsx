@@ -15,7 +15,7 @@ const Navbar: React.FC = () => {
           className="bg-white text-slate-800 font-semibold px-4 py-2 rounded-lg shadow-md hover:bg-slate-200 transition duration-300"
           href="/addTopic"
         >
-          Add Topic
+          Add Tasks
         </Link>
       </div>
     </nav>
