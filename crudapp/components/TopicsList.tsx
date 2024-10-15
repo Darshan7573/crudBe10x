@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import RemoveBtn from "./RemoveBtn";
 import { HiPencilAlt } from "react-icons/hi";
@@ -25,8 +28,21 @@ const getTopics = async (): Promise<{ topics: Topic[] }> => {
   }
 };
 
-const TopicsList: React.FC = async () => {
-  const { topics } = await getTopics();
+const TopicsList: React.FC = () => {
+  const [topics, setTopics] = useState<Topic[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const { topics } = await getTopics();
+      setTopics(topics);
+    };
+
+    fetchData();
+  }, []);
+
+  const handleRemoveFromState = (id: string) => {
+    setTopics((prevTopics) => prevTopics.filter((topic) => topic._id !== id)); // Remove the topic from state
+  };
 
   return (
     <div className="max-w-3xl mx-auto p-4">
@@ -42,7 +58,10 @@ const TopicsList: React.FC = async () => {
             </div>
 
             <div className="flex gap-2">
-              <RemoveBtn id={t._id} />
+              <RemoveBtn
+                id={t._id}
+                onRemove={() => handleRemoveFromState(t._id)} // Pass callback to remove topic from state
+              />
               <Link href={`/editTopic/${t._id}`} aria-label="Edit Topic">
                 <HiPencilAlt
                   size={24}
