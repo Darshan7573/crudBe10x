@@ -13,7 +13,7 @@ interface Topic {
 
 const getTopics = async (): Promise<{ topics: Topic[] }> => {
   try {
-    const res = await fetch("https://crudbe10x.vercel.app/api/topics", {
+    const res = await fetch("http://localhost:3000/api/topics", {
       cache: "no-store",
     });
 

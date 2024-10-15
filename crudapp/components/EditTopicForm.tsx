@@ -23,7 +23,7 @@ export default function EditTopicForm({
     e.preventDefault();
 
     try {
-      const res = await fetch(`https://crudbe10x.vercel.app/api/topics/${id}`, {
+      const res = await fetch(`http://localhost:3000/api/topics/${id}`, {
         method: "PUT",
         headers: {
           "Content-type": "application/json",

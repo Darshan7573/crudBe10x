@@ -15,12 +15,9 @@ export default function RemoveBtn({ id, onRemove }: RemoveBtnProps) {
     const confirmed = confirm("Are you sure?");
 
     if (confirmed) {
-      const res = await fetch(
-        `https://crudbe10x.vercel.app/api/topics?id=${id}`,
-        {
-          method: "DELETE",
-        }
-      );
+      const res = await fetch(`http://localhost:3000/api/topics?id=${id}`, {
+        method: "DELETE",
+      });
 
       if (res.ok) {
         onRemove(); // Remove topic from the state immediately
