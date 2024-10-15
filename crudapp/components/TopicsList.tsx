@@ -46,32 +46,36 @@ const TopicsList: React.FC = () => {
 
   return (
     <div className="max-w-3xl mx-auto p-4">
-      {topics.map((t) => (
-        <div
-          key={t._id}
-          className="p-6 border border-slate-300 my-4 bg-white rounded-lg shadow-md transition-transform duration-200 hover:scale-105"
-        >
-          <div className="flex justify-between items-start">
-            <div className="flex-1">
-              <h2 className="font-bold text-xl text-gray-800">{t.title}</h2>
-              <p className="text-gray-600">{t.description}</p>
-            </div>
+      {topics.length === 0 ? (
+        <p className="text-center text-gray-500">No topics available</p>
+      ) : (
+        topics.map((t) => (
+          <div
+            key={t._id}
+            className="p-6 border border-slate-300 my-4 bg-white rounded-lg shadow-md transition-transform duration-200 hover:scale-105"
+          >
+            <div className="flex justify-between items-start">
+              <div className="flex-1">
+                <h2 className="font-bold text-xl text-gray-800">{t.title}</h2>
+                <p className="text-gray-600">{t.description}</p>
+              </div>
 
-            <div className="flex gap-2">
-              <RemoveBtn
-                id={t._id}
-                onRemove={() => handleRemoveFromState(t._id)} // Pass callback to remove topic from state
-              />
-              <Link href={`/editTopic/${t._id}`} aria-label="Edit Topic">
-                <HiPencilAlt
-                  size={24}
-                  className="text-gray-500 hover:text-green-600 transition duration-200"
+              <div className="flex gap-2">
+                <RemoveBtn
+                  id={t._id}
+                  onRemove={() => handleRemoveFromState(t._id)} // Pass callback to remove topic from state
                 />
-              </Link>
+                <Link href={`/editTopic/${t._id}`} aria-label="Edit Topic">
+                  <HiPencilAlt
+                    size={24}
+                    className="text-gray-500 hover:text-green-600 transition duration-200"
+                  />
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))
+      )}
     </div>
   );
 };
